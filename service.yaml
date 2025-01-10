@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: houseprice
+spec:
+  type: LoadBalancer
+  selector:
+    app: houseprice
+  ports:
+    - port: 8000
+      targetPort: 8000

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: houseprice
+  labels:
+    name: houseprice
+spec:
+  containers:
+    - name: apiimg
+      image: apiimg
+      imagePullPolicy: Never
