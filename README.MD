@@ -12,7 +12,7 @@ Execute the project Python way:
 Execute the project Docker Way:
 
 1. Type "docker build -t <image_name> <space> .(dot)
-2. Type "docker run -p :8000:8000 --name <container_name> <image_name>
+2. Type "docker run -p 8000:8000 --name <container_name> <image_name>
 3. Test the REST API with FastAPI swagger UI http://127.0.0.1:8000
 
 For the above steps it is essential that Docker daemon is installed into the system.
@@ -45,7 +45,7 @@ Kubernets:
  4. Create Kubernetes namespace:
      kubectl create namespace dev
  5. Create Kubernetes deployment pods:
-     kubectl apply -f deployment.yaml
+     kubectl apply -f deployment.yaml -n dev
  6. Create Service of Kubernetes to access the pods:
      kubectl apply -f service.yaml -n dev
  7. Since this is the local docker image it needs to be forwarded to the port:

@@ -95,6 +95,7 @@ rfr = RandomForestRegressor(n_estimators=10, max_depth=4)
 sfs = SFS(rfr,
           n_features_to_select=10,
           direction="forward",
+          tol=None,
           scoring="r2",
           cv=5, n_jobs=-1)
 
@@ -119,4 +120,11 @@ with open("saved_models/evaluation.txt", "wt") as f:
 
 with open("saved_models/features.txt", "wt") as f:
     for feat in X_train[selected_features]:
-        f.write(f"{feat} : {X_train[feat].dtypes}\n")    
+        dtype = X_train[feat].dtypes
+
+        # Convert NumPy types to Python types
+        if dtype in ["int16", "int32", "int64"]:
+            dtype = "int"
+        elif dtype in ["float16", "float32", "float64"]:
+            dtype = "float"
+        f.write(f"{feat}: {dtype}\n")    
